@@ -1013,8 +1013,7 @@
                 .sort((first, second) => first.name.localeCompare(second.name, 'ar'));
 
             const sections = roots.map((category) => {
-                const ids = getCategoryFilters(category.id) || new Set([category.id]);
-                const sectionArticles = articles.filter((article) => ids.has(article.categoryId)).slice(0, 10);
+                const sectionArticles = articles.filter((article) => article.categoryId === category.id).slice(0, 10);
                 if (!sectionArticles.length) return '';
 
                 const viewAllHref = category.url || `./index.html?category=${encodeURIComponent(category.id)}`;
